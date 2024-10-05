@@ -1,5 +1,7 @@
 defmodule ExMon do
+  alias ExMon.Game.Actions
   alias ExMon.{Game, Player}
+  alias ExMon.Game.Status
 
   @computer_name "Robotinik"
 
@@ -11,5 +13,11 @@ defmodule ExMon do
     @computer_name
     |> create_player(:punch, :kick, :heal)
     |> Game.start(player)
+
+    Status.print_round_message()
+  end
+
+  def make_move(move) do
+    Actions.fetch_move(move)
   end
 end
